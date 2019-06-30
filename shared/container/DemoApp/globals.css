@@ -1,11 +1,14 @@
 html {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
+  height: 100%;
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
 }
 
 *,
 *:before,
 *:after {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -19,3 +22,77 @@ ul {
 }
 
 ul li { display: inline; margin: 0 .5rem; }
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+body {
+  background: #eee;
+  color: #333;
+  font: 18px/1.7222 "Montserrat", sans-serif;
+}
+
+.flex-container {
+  margin: 20px auto;
+  max-width: 480px;
+}
+
+.flex-card {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px #ccc;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.flex-card:hover {
+  box-shadow: 0px 10px 40px #ccc;
+}
+
+.flex-card__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.flex-card__content {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  padding: 0 18px;
+}
+
+.flex-card__content-title {
+  font-size: 28px;
+  margin: 18px 0 0;
+}
+
+.flex-card__content-subtitle {
+  margin: 18px 0;
+}
+
+.flex-card__content p {
+  flex: 1 0 auto;
+  font-size: 16px;
+  margin-bottom: 18px;
+}
+
+.flex-card__actions {
+  padding: 18px;
+}
+
+.flex-card__actions-button {
+  background: #009688;
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px #ccc;
+  border: none; /* For <button> */
+  color: #fff;
+  cursor: pointer; /* For <button> */
+  display: inline-block;
+  font: 18px/1.7222 "Montserrat", sans-serif;
+  padding: 8px 18px;
+  text-align: center;
+  text-decoration: none;
+}
