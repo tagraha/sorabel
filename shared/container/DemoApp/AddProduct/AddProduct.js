@@ -6,7 +6,7 @@ class AddProduct extends Component {
   constructor(props) {
     super(props);
     this.ref = firebase.firestore().collection('product');
-    this.storageRef = firebase.storage().ref();
+    this.storageRef = firebase.storage();
   }
   render() {
     return (
@@ -24,7 +24,7 @@ class AddProduct extends Component {
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               // upload image
-              const uploadTask = this.storageRef.child(`images/${values.productPicture.name}`).put(values.productPicture);
+              const uploadTask = this.storageRef.ref().child(`images/${values.productPicture.name}`).put(values.productPicture);
               uploadTask.on('state_changed', (snapshot) => {
                 // Observe state change events such as progress, pause, and resume
                 console.log(snapshot);

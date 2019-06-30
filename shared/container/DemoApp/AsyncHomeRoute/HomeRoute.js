@@ -1,25 +1,79 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { withJob } from 'react-jobs';
 import Helmet from 'react-helmet';
 
+import firebase from '../Firebase';
 import config from '../../../../config';
 
-function HomeRoute() {
-  return (
-    <div>
-      <Helmet>
-        <title>Home</title>
-      </Helmet>
+import { setProductsStore } from '../../../redux/modules/products';
+import ProductList from '../../../components/Products/ProductList';
 
-      <h2>{config('welcomeMessage')}</h2>
+class HomeRoute extends React.Component {
+  constructor(props) {
+    super(props);
+    this.firebaseRef = firebase.firestore().collection('product');
+    this.getProductsItem = this.getProductsItem.bind(this);
+    this.onCollectionUpdate = this.onCollectionUpdate.bind(this);
+  }
 
-      <p>
-        This starter kit contains all the build tooling and configuration you
-        need to kick off your next universal React project, whilst containing a
-        minimal project set up allowing you to make your own architecture
-        decisions (Redux/Mobx etc).
-      </p>
-    </div>
-  );
+  onCollectionUpdate(querySnapshot) {
+    const productItems = [];
+    querySnapshot.forEach((doc) => {
+      const { productName, productPrice, productImage } = doc.data();
+      productItems.push({
+        key: doc.id,
+        doc, // DocumentSnapshot
+        productName,
+        productPrice,
+        productImage,
+      });
+    });
+
+    this.props.setProductsStore(productItems);
+  }
+
+  getProductsItem() {
+    this.unsubscribe = this.firebaseRef.onSnapshot(this.onCollectionUpdate);
+  }
+
+  componentDidMount() {
+    this.getProductsItem();
+  }
+
+  componentDidUpdate() {
+    console.log(this.props);
+  }
+
+  render() {
+    const { products } = this.props;
+    return (
+      <div>
+        <Helmet>
+          <title>Home</title>
+        </Helmet>
+
+        <h3>product</h3>
+        {products.data.map((value, index) =>
+          <Fragment key={value.key}>
+            <ProductList data={value} />
+          </Fragment>
+        )}
+      </div>
+    );
+  }
 }
 
-export default HomeRoute;
+const mapStateToProps = state => ({
+  products: state.products,
+});
+
+const mapActionsToProps = {
+  setProductsStore: setProductsStore
+};
+
+export default compose(
+  connect(mapStateToProps, mapActionsToProps),
+)(HomeRoute);

@@ -9,10 +9,12 @@ import axios from 'axios';
 
 import counter from './modules/counter';
 import post from './modules/post';
+import products from './modules/products';
 
 const reducer = combineReducers({
   counter,
   post,
+  products,
 });
 
 function craftMidleware() {
