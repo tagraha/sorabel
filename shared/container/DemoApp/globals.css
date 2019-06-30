@@ -26,7 +26,6 @@ ul li { display: inline; margin: 0 .5rem; }
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
 body {
-  background: #eee;
   color: #333;
   font: 18px/1.7222 "Montserrat", sans-serif;
 }

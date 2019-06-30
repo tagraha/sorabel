@@ -8,6 +8,7 @@ import Helmet from 'react-helmet';
 import config from '../../../config';
 
 import './globals.css';
+import './bulma.min.css';
 
 import Error404 from './Error404';
 import Header from './Header';
