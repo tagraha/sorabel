@@ -13,15 +13,26 @@ class AddProduct extends Component {
       <Fragment>
         <h1>add product</h1>
         <Formik
-          initialValues={{ productName: '', productPrice: '' }}
+          initialValues={{
+            productName: '',
+            productPrice: ''
+          }}
           validate={values => {
             let errors = {};
             if (!values.productName) {
               errors.productName = 'Product Name Required';
             }
 
+            if (!values.productPrice) {
+              errors.productPrice = 'Product Price Required';
+            }
+
             if (!values.productDescription) {
               errors.productDescription = 'Product Desscription required';
+            }
+
+            if (!values.productPicture) {
+              errors.productPicture = 'Product image is required';
             }
             return errors;
           }}
@@ -106,7 +117,7 @@ class AddProduct extends Component {
                     value={values.productPrice}
                   />
                 </div>
-                <p className="help">
+                <p className="help is-danger">
                   {errors.productPrice && touched.productPrice && errors.productPrice}
                 </p>
               </div>
@@ -120,7 +131,7 @@ class AddProduct extends Component {
                 value={values.productDescription}
               ></textarea>
               <p className="help is-danger">
-                {errors.productDescription && touched.productDescription && errors.productDescription}
+                {errors.productDescription && errors.productDescription}
               </p>
 
               <br />
@@ -136,6 +147,9 @@ class AddProduct extends Component {
                 onBlur={handleBlur}
                 value={values.productImage}
               />
+              <p className="help is-danger">
+                {errors.productPicture && errors.productPicture}
+              </p>
               <button type="submit" disabled={isSubmitting} className={`button is-primary ${isSubmitting ? 'is-loading' : ''}`}>
                 Submit
               </button>
