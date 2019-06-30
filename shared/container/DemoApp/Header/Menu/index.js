@@ -2,24 +2,22 @@
 
 import React from 'react';
 import Link from 'react-router-dom/Link';
+import styled from 'styled-components';
+
+const StyledNav = styled.ul`
+  padding: 1rem;
+  border: 1px solid rgb(198, 198, 198);
+  position: fixed;
+  width: 100%;
+  display: block;
+  background: #fff;
+`;
 
 function Menu() {
   return (
-    <ul
-      style={{
-        marginTop: '1rem',
-        padding: '1rem',
-        border: '1px solid #c6c6c6',
-      }}
-    >
+    <StyledNav>
       <li>
         <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/counter">Counter</Link>
-      </li>
-      <li>
-        <Link to="/async">Async example</Link>
       </li>
       <li>
         <Link to="/addproduct">Add product</Link>
@@ -27,7 +25,7 @@ function Menu() {
       <li>
         <Link to="/about">About</Link>
       </li>
-    </ul>
+    </StyledNav>
   );
 }
 
