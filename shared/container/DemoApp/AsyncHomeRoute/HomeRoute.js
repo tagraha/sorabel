@@ -22,13 +22,14 @@ class HomeRoute extends React.Component {
   onCollectionUpdate(querySnapshot) {
     const productItems = [];
     querySnapshot.forEach((doc) => {
-      const { productName, productPrice, productImage } = doc.data();
+      const { productName, productPrice, productImage, productDescription } = doc.data();
       productItems.push({
         key: doc.id,
         doc, // DocumentSnapshot
         productName,
         productPrice,
         productImage,
+        productDescription,
       });
     });
 

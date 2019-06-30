@@ -15,7 +15,7 @@ const ProductList = props => {
         <div className="flex-card__content">
           <h3 className="flex-card__content-title">{props.data.productName}</h3>
           <h5 className="flex-card__content-subtitle">Rp.&nbsp;{formatNumber(props.data.productPrice)}</h5>
-          <p>Maecenas aliquet malesuada purus nec vulputate. Aenean volutpat lectus sed vestibulum ornare.</p>
+          <p>{props.data.productDescription}</p>
         </div>
         <div className="flex-card__actions">
           <Link to={`/product/${props.data.key}`} className="flex-card__actions-button">Detail</Link>

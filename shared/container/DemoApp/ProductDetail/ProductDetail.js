@@ -35,6 +35,7 @@ class ProductDetailPage extends React.Component {
             name: itemData.productName,
             image: itemData.productImage,
             price: itemData.productPrice,
+            description: itemData.productDescription,
             isProductFound: true,
           }
         });
