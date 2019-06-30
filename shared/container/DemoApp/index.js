@@ -16,6 +16,7 @@ import AsyncHomeRoute from './AsyncHomeRoute';
 import AsyncCounterRoute from './AsyncCounterRoute';
 import AsyncPostRoute from './AsyncPostRoute';
 import AsyncAboutRoute from './AsyncAboutRoute';
+import AddProduct from './AddProduct';
 
 function DemoApp() {
   return (
@@ -156,6 +157,7 @@ function DemoApp() {
           <Route path="/counter" component={AsyncCounterRoute} />
           <Route path="/async" component={AsyncPostRoute} />
           <Route path="/about" component={AsyncAboutRoute} />
+          <Route path="/addproduct" component={AddProduct} />
           <Route component={Error404} />
         </Switch>
       </div>
