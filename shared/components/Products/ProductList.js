@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ProductList = props => {
   const formatNumber = (num) => {
@@ -17,7 +18,7 @@ const ProductList = props => {
           <p>Maecenas aliquet malesuada purus nec vulputate. Aenean volutpat lectus sed vestibulum ornare.</p>
         </div>
         <div className="flex-card__actions">
-          <a href="#" className="flex-card__actions-button">Detail</a>
+          <Link to={`/product/${props.data.key}`} className="flex-card__actions-button">Detail</Link>
         </div>
       </div>
     </div>
