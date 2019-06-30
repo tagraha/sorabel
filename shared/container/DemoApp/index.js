@@ -13,14 +13,13 @@ import Error404 from './Error404';
 import Header from './Header';
 
 import AsyncHomeRoute from './AsyncHomeRoute';
-import AsyncCounterRoute from './AsyncCounterRoute';
-import AsyncPostRoute from './AsyncPostRoute';
 import AsyncAboutRoute from './AsyncAboutRoute';
 import AddProduct from './AddProduct';
+import ProductDetail from './ProductDetail';
 
 function DemoApp() {
   return (
-    <div style={{ padding: '2rem' }}>
+    <React.Fragment>
       <Helmet>
         <html lang="en" />
         <meta charSet="utf-8" />
@@ -151,17 +150,16 @@ function DemoApp() {
         */}
       </Helmet>
       <Header />
-      <div style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
+      <div style={{ padding: '6rem 2rem' }}>
         <Switch>
           <Route exact path="/" component={AsyncHomeRoute} />
-          <Route path="/counter" component={AsyncCounterRoute} />
-          <Route path="/async" component={AsyncPostRoute} />
           <Route path="/about" component={AsyncAboutRoute} />
           <Route path="/addproduct" component={AddProduct} />
+          <Route path="/product/:productKey" component={ProductDetail} />
           <Route component={Error404} />
         </Switch>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 
