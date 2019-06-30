@@ -16,28 +16,6 @@ function AboutRoute() {
         <br />
         <span>Tirta Nugraha (dev.nugrata@gmail.com)</span>
       </p>
-
-      <p>
-        View our contributors list on our{' '}
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/tagraha/react-start"
-        >
-          GitHub
-        </a>{' '}
-        page.
-      </p>
-      <p>
-        honorable mention{' '}
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/ctrlplusb"
-        >
-          ctrlplusb
-        </a>
-      </p>
     </div>
   );
 }
