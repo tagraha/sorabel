@@ -36,6 +36,7 @@ const cspConfig = {
       // recognise that we have also provided a nonce configuration and
       // use the stricter rule.
       "'unsafe-inline'",
+      "https://sorabel-2090f.firebaseio.com",
     ],
     styleSrc: [
       "'self'",
