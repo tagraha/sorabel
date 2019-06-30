@@ -22,6 +22,9 @@ function Menu() {
         <Link to="/async">Async example</Link>
       </li>
       <li>
+        <Link to="/addproduct">Add product</Link>
+      </li>
+      <li>
         <Link to="/about">About</Link>
       </li>
     </ul>
