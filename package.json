@@ -20,9 +20,9 @@
     "start": "cross-env NODE_ENV=production node build/server",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "release:major": "changelog -M -u https://github.com/tagraha/react-start && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin --tags",
-    "release:minor": "changelog -m -u https://github.com/tagraha/react-start && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin --tags",
-    "release:patch": "changelog -p -u https://github.com/tagraha/react-start && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin --tags",
+    "release:major": "changelog -M -u https://github.com/tagraha/sorabel && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin --tags",
+    "release:minor": "changelog -m -u https://github.com/tagraha/sorabel && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin --tags",
+    "release:patch": "changelog -p -u https://github.com/tagraha/sorabel && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin --tags",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
@@ -53,7 +53,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tagraha/react-start"
+    "url": "git+https://github.com/tagraha/sorabel"
   },
   "keywords": [
     "react",
@@ -66,9 +66,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tagraha/react-start/issues"
+    "url": "https://github.com/tagraha/sorabel/issues"
   },
-  "homepage": "https://github.com/tagraha/react-start#readme",
+  "homepage": "https://github.com/tagraha/sorabel#readme",
   "dependencies": {
     "app-root-dir": "1.0.2",
     "axios": "0.19.0",
