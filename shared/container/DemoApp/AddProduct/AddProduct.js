@@ -17,7 +17,11 @@ class AddProduct extends Component {
           validate={values => {
             let errors = {};
             if (!values.productName) {
-              errors.productName = 'Required';
+              errors.productName = 'Product Name Required';
+            }
+
+            if (!values.productDescription) {
+              errors.productDescription = 'Product Desscription required';
             }
             return errors;
           }}
@@ -43,6 +47,7 @@ class AddProduct extends Component {
                     this.ref.add({
                       productName: values.productName,
                       productPrice: values.productPrice,
+                      productDescription: values.productDescription,
                       productImage: producImageURL,
                     }).then((docRef) => {
                       alert(JSON.stringify(values, null, 2));
@@ -71,22 +76,57 @@ class AddProduct extends Component {
             /* and other goodies */
           }) => (
             <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="productName"
+
+              <div className="field">
+                <label className="label">Product Name</label>
+                <div className="control">
+                  <input
+                    type="text"
+                    name="productName"
+                    className="input"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.productName}
+                  />
+                </div>
+                <p className="help is-danger">
+                  {errors.productName && touched.productName && errors.productName}
+                </p>
+              </div>
+
+              <div className="field">
+                <label className="label">Price</label>
+                <div className="control">
+                  <input
+                    type="number"
+                    name="productPrice"
+                    className="input"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.productPrice}
+                  />
+                </div>
+                <p className="help">
+                  {errors.productPrice && touched.productPrice && errors.productPrice}
+                </p>
+              </div>
+
+              <textarea
+                name="productDescription"
+                className="textarea"
+                placeholder="Product description"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.productName}
-              />
-              {errors.productName && touched.productName && errors.productName}
-              <input
-                type="number"
-                name="productPrice"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.productPrice}
-              />
-              {errors.productPrice && touched.productPrice && errors.productPrice}
+                value={values.productDescription}
+              ></textarea>
+              <p className="help is-danger">
+                {errors.productDescription && touched.productDescription && errors.productDescription}
+              </p>
+
+              <br />
+              <br />
+              <br />
+
               <input
                 type="file"
                 name="productImage"
@@ -96,7 +136,7 @@ class AddProduct extends Component {
                 onBlur={handleBlur}
                 value={values.productImage}
               />
-              <button type="submit" disabled={isSubmitting}>
+              <button type="submit" disabled={isSubmitting} className={`button is-primary ${isSubmitting ? 'is-loading' : ''}`}>
                 Submit
               </button>
             </form>
