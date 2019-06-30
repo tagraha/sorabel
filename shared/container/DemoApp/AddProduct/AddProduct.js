@@ -6,6 +6,7 @@ class AddProduct extends Component {
   constructor(props) {
     super(props);
     this.ref = firebase.firestore().collection('product');
+    this.storageRef = firebase.storage().ref();
   }
   render() {
     return (
@@ -22,19 +23,39 @@ class AddProduct extends Component {
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              this.ref.add({
-                values
-              }).then((docRef) => {
+              // upload image
+              const uploadTask = this.storageRef.child(`images/${values.productPicture.name}`).put(values.productPicture);
+              uploadTask.on('state_changed', (snapshot) => {
+                // Observe state change events such as progress, pause, and resume
+                console.log(snapshot);
+                },
+                (error) => {
+                  // Handle unsuccessful uploads
+                  console.log('upload error');
+                  console.log(error);
+                  setSubmitting(false);
+                },
+                (image) => {
+                  // Do something once upload is complete
+                  console.log('upload success');
+                  uploadTask.snapshot.ref.getDownloadURL().then((producImageURL) => {
+                    // save to firebase
+                    this.ref.add({
+                      productName: values.productName,
+                      productPrice: values.productPrice,
+                      productImage: producImageURL,
+                    }).then((docRef) => {
+                      alert(JSON.stringify(values, null, 2));
+                      setSubmitting(false);
 
-                alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-
-                this.props.history.push("/");
-              })
-              .catch((error) => {
-                setSubmitting(false);
-                console.error("Error adding document: ", error);
-              });
+                      this.props.history.push("/");
+                    })
+                    .catch((error) => {
+                      setSubmitting(false);
+                      console.error("Error adding document: ", error);
+                    });
+                  });
+                });
             }, 400);
           }}
         >
@@ -46,6 +67,7 @@ class AddProduct extends Component {
             handleBlur,
             handleSubmit,
             isSubmitting,
+            setFieldValue,
             /* and other goodies */
           }) => (
             <form onSubmit={handleSubmit}>
@@ -65,6 +87,15 @@ class AddProduct extends Component {
                 value={values.productPrice}
               />
               {errors.productPrice && touched.productPrice && errors.productPrice}
+              <input
+                type="file"
+                name="productImage"
+                onChange={(event) => {
+                  setFieldValue("productPicture", event.currentTarget.files[0]);
+                }}
+                onBlur={handleBlur}
+                value={values.productImage}
+              />
               <button type="submit" disabled={isSubmitting}>
                 Submit
               </button>
