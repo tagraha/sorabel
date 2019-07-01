@@ -16,6 +16,13 @@ const ProductDescription = styled.div`
 `;
 
 const ProductList = props => {
+  if (props.data.isLoadingProduct) {
+    return <div>Loading...</div>
+  }
+
+  if (!props.data.name && !props.data.isLoadingProduct) {
+    return <div>product not found</div>
+  }
   return (
     <React.Fragment>
       <div className="row">

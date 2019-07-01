@@ -15,6 +15,7 @@ class ProductDetailPage extends React.Component {
       image: '',
       price: '',
       isProductFound: false,
+      isLoadingProduct: false,
     };
 
     this.goBack = this.goBack.bind(this);
@@ -25,6 +26,11 @@ class ProductDetailPage extends React.Component {
   }
 
   componentDidMount() {
+    this.setState((prevState, props) => {
+      return {
+        isLoadingProduct: true,
+      }
+    })
     const dataKey = this.props.match.params.productKey;
     const itemRef = db.collection("product").doc(dataKey);
     itemRef.get().then(doc => {
@@ -37,12 +43,14 @@ class ProductDetailPage extends React.Component {
             price: itemData.productPrice,
             description: itemData.productDescription,
             isProductFound: true,
+            isLoadingProduct: false,
           }
         });
       } else {
         this.setState((prevState, props) => {
           return {
             isProductFound: false,
+            isLoadingProduct: false,
           }
         })
       }
