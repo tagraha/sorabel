@@ -1,3 +1,19 @@
+### 1.2.0 (2019-07-01)
+
+##### New Features
+
+* **product:**
+  *  add not found product & loading product ([e93ed15f](https://github.com/tagraha/sorabel/commit/e93ed15fabcaf2a7663b6eb09025561e6dfee752))
+  *  make image and title clickable ([609685cb](https://github.com/tagraha/sorabel/commit/609685cbb7defbc8b48b8f458f78bb73603468f6))
+
+##### Other Changes
+
+* **label:**  add label for image upload ([1c25ae3f](https://github.com/tagraha/sorabel/commit/1c25ae3f8cae84b07ed93c9b80f63c2c31cf9399))
+
+##### Code Style Changes
+
+* **css:**  add className for title ([06632c95](https://github.com/tagraha/sorabel/commit/06632c950e52c904deb4ca58a41bd472a7985730))
+
 ### 1.1.0 (2019-06-30)
 
 ##### New Features
