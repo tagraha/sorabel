@@ -138,6 +138,7 @@ class AddProduct extends Component {
               <br />
               <br />
 
+              <label className="label">Product Image</label>
               <input
                 type="file"
                 name="productImage"
