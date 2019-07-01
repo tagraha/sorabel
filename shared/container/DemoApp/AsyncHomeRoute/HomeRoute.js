@@ -56,7 +56,7 @@ class HomeRoute extends React.Component {
           <title>Home</title>
         </Helmet>
 
-        <h3>product</h3>
+        <h3 class="title">product</h3>
         {products.data.map((value, index) =>
           <Fragment key={value.key}>
             <ProductList data={value} />
