@@ -10,10 +10,14 @@ const ProductList = props => {
     <div className="flex-container">
       <div className="flex-card">
         <div className="flex-card__media">
-          <img src={props.data.productImage} alt={`${props.data.productName} image`} />
+          <Link to={`/product/${props.data.key}`}>
+            <img src={props.data.productImage} alt={`${props.data.productName} image`} />
+          </Link>
         </div>
         <div className="flex-card__content">
-          <h3 className="flex-card__content-title">{props.data.productName}</h3>
+          <h3 className="flex-card__content-title">
+            <Link to={`/product/${props.data.key}`}>{props.data.productName}</Link>
+          </h3>
           <h5 className="flex-card__content-subtitle">Rp.&nbsp;{formatNumber(props.data.productPrice)}</h5>
           <p>{props.data.productDescription}</p>
         </div>
