@@ -12,6 +12,10 @@ href="https://david-dm.org/tagraha/sorabel?type=dev">
   <img src="https://david-dm.org/tagraha/sorabel/dev-status.svg" alt="Dev Dependency Status" />
 </a>
 
+Changelog
+---------
+<a href="https://github.com/tagraha/sorabel/blob/master/CHANGELOG.md">Changelog</a>
+
 Installation
 ------------
 ```bash
