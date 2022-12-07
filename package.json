@@ -147,7 +147,7 @@
     "istanbul-api": "2.0.6",
     "istanbul-reports": "2.2.6",
     "jest": "23.5.0",
-    "lint-staged": "8.2.1",
+    "lint-staged": "13.1.0",
     "md5": "2.2.1",
     "modernizr-loader": "1.0.1",
     "prettier": "1.18.2",
